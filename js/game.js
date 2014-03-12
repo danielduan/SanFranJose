@@ -253,6 +253,18 @@ function calculate() {
   $("#citycap").html(housing);
   $("#citypop").html(tech + pro + natives);
   $("#cityrent").html(Math.round(1000 * ((tech + pro + natives)/ housing)));
+  if (revenue - cost < 0) {
+    $("#citycost").css("color", "red");
+    $("#citytax").css("color", "red");
+  } else {
+    $("#citycost").css("color", "green");
+    $("#citytax").css("color", "green");
+  }
+  if (SF.Current.cash < 0) {
+    $("#citycash").css("color", "red");
+  } else {
+    $("#citycash").css("color", "green");
+  }
   return revenue - cost;
 }
 
