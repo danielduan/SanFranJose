@@ -3,6 +3,7 @@
 SF.UI = {};
 
 //***** button base *****
+/*
 SF.UI.Button = function(label, color, clickevent) {
   this.label = label;
   if (!color) { color = "#FFF"; }
@@ -51,31 +52,48 @@ SF.UI.ImageButton = function(url, color, clickevent) {
 
 SF.UI.ImageButton.prototype = new createjs.Container();
 
+*/
+
 //***** land UI blocks *****
-SF.UI.Land = function(land, x, y) {
+SF.UI.Land = function(land, y, x) {
+  var startx = 12;
+  var starty = 12;
+  this.land = land;
   this.x = x;
   this.y = y;
-  this.image = new createjs.Bitmap(land.url[land.type()]);
-  this.image.x = x * 150;
-  this.image.y = y * 150;
-  this.upgrade = new createjs.Bitmap(SF.Files.getResult('upgrade'));
-  this.upgrade.x = x * 150;
-  this.upgrade.y = y * 150 + 100;
-  //var label = new SF.UI.Button(land.name);
   
+  //background image
+  this.background = new createjs.Shape();
+  this.background.graphics.beginFill("white").drawRoundRect(x * 150 + startx, y * 150 + starty, 125, 125, 5);
+  
+  //icon
+  this.image = new createjs.Bitmap(land.url[land.type()]);
+  this.image.x = x * 150 + startx;
+  this.image.y = y * 150 + starty;
+  
+  //upgrade button
+  this.upgrade = new createjs.Bitmap(SF.Files.getResult('upgrade'));
+  this.upgrade.x = x * 150 + startx;
+  this.upgrade.y = y * 150 + 100 + starty;
+  this.upgradebg = new createjs.Shape();
+  this.upgradebg.graphics.beginFill("#27ae60").drawRoundRect(x * 150 + startx, y * 150 + 100 + starty, 25, 25, 5);
+  
+  //text label
   this.label = new createjs.Text(land.name, "10px Arial", "#000");
   this.label.textBaseline = "top";
   this.label.textAlign = "center";
-  this.label.x = x * 150 + 126/2;
-  this.label.y = y * 150 + 100 + 8;
+  this.label.x = x * 150 + 126/2 + startx;
+  this.label.y = y * 150 + 100 + 8 + starty;
   
-  this.background = new createjs.Shape();
-  this.background.graphics.beginFill("white").drawRoundRect(28,100,75,20,1);
-  
+  //remove button
   this.remove = new createjs.Bitmap(SF.Files.getResult('upgrade'));
-  this.remove.x = x * 150 + 100;
-  this.remove.y = y * 150 + 100;
-  this.addChild(this.background, this.image, this.upgrade, this.label, this.remove);
+  this.remove.x = x * 150 + 100 + startx;
+  this.remove.y = y * 150 + 100 + starty;
+  this.removebg = new createjs.Shape();
+  this.removebg.graphics.beginFill("#c0392b").drawRoundRect(x * 150 + startx + 100, y * 150 + starty + 100, 25, 25, 5);
+  
+  
+  this.addChild(this.background, this.image, this.upgradebg, this.upgrade, this.label, this.remove);
 }
 
 SF.UI.Land.prototype = new createjs.Container();

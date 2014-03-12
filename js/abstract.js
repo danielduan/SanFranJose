@@ -11,7 +11,7 @@ SF.Abstract.Land = function() {
   this.cost = 10;
   this.name = 'Land';
   this.increment = 0;
-  this.url = [SF.Files.getResult('land')];
+  this.url = ['img/land.png'];
 };
 
 SF.Abstract.Land.prototype = {
@@ -66,7 +66,7 @@ SF.Abstract.Office = function() {
   this.cost = 10;
   this.name = SF.Utils.Company();
   this.tier = 1;
-  this.url = [SF.Files.getResult('land'), SF.Files.getResult('land'), SF.Files.getResult('land')];
+  this.url = ['img/land.png','img/land.png','img/land.png'];
   //startup name generator
 };
 
@@ -92,7 +92,7 @@ SF.Abstract.Restaurant = function() {
   this.cost = 10;
   this.name = 'Sombrero Taco';
   this.tier = 1;
-  this.url = [SF.Files.getResult('land'), SF.Files.getResult('land'), SF.Files.getResult('land')];
+  this.url = ['img/land.png','img/land.png','img/land.png'];
   //startup name generator
 };
 
@@ -118,7 +118,7 @@ SF.Abstract.Residence = function() {
   this.cost = 10;
   this.name = 'Pacifico House';
   this.tier = 1;
-  this.url = [SF.Files.getResult('land'), SF.Files.getResult('land'), SF.Files.getResult('land')];
+  this.url = ['img/land.png','img/land.png','img/land.png'];
   //startup name generator
 };
 

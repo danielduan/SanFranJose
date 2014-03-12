@@ -44,22 +44,23 @@ SF.Grid = {
             break;
         }
         
-        row_arr.push(land); //change
+        row_arr.push(land); 
       }
       this.Instances.push(row_arr); //change
     }
     
+    var html = "";
+    
     for (var row = 0; row < SF.Config.gridrow; row++) {
-      var row_arr = [];
       for (var col = 0; col < SF.Config.gridcol; col++) {
-        console.log(SF.Grid.Instances[row][col]);
-        var ld = new SF.UI.Land(SF.Grid.Instances[row][col], row, col);
-        console.log(ld);
-        SF.Stage.addChild(ld);
-        row_arr.push(ld); //change
+        var location = "grid" + col + "_" + row;
+        var grid = SF.Grid.Instances[row][col];
+        html += '<div class="landgrid"><div class="landitem"><img id="img' + location +  '" onclick="display(' + row + ',' + col + ')" src="' + grid.url[0] + '"></div><div class="landitem"><img id="upgrade' + location + '" class="upgrade" onclick="upgrade(' + row + ',' + col + ')" src="img/upgrade.png"></div><div class="landitem label">' + grid.name + '</div><div class="landitem"><img id="remove' + location + '" class="remove" onclick="rm(' + row + ',' + col + ')" src="img/upgrade.png"></div></div>';
+        
       }
-      this.Views.push(row_arr); //change
     }
+    
+    $('#game').html(html);
   },
   Instances: [],
   Views: [],
@@ -90,16 +91,15 @@ SF.Stage = new createjs.Stage('gameCanvas');
 //***** initialize game variables *****
 SF.Init = function() {
   SF.Grid.init();
-  var ld = new SF.UI.Land(SF.Grid.Instances[0][0], 0, 0);
-  SF.Stage.addChild(ld);
 };
 
 //***** renders stage *****
 SF.Render = {
   Update: function() {
-    SF.Stage.update();
+    //SF.Stage.update();
+    
+    
   }
-  
 };
 
 //***** misc generators *****
@@ -154,7 +154,7 @@ SF.Files = {};
 //***** starts game when browser ready *****
 $( document ).ready(function() {
    //precache files
-   SF.Files = new createjs.LoadQueue();
+/*   SF.Files = new createjs.LoadQueue();
    SF.Files.on("complete", handleComplete, this);
    SF.Files.loadManifest([
        {id: "upgrade", src:"img/upgrade.png"},
@@ -164,6 +164,9 @@ $( document ).ready(function() {
    function handleComplete() {
        SF.Init();
        SF.Render.Update();
-   }
+   }*/
+  
+  SF.Init()
+  
   
 });

@@ -1,10 +1,48 @@
 body {
   background-color: #2c3e50;
+  line-height: 0px;
+  margin:0;
 }
 
-#game {
+#content {
   background-color: #ecf0f1;
   width: 1000px;
   height: 600px;
   margin: 0 auto;
+}
+
+#game {
+  background-color: #95a5a6;
+  width: 761px;
+  height: 600px;
+}
+
+.landgrid {
+  display: inline-block;
+  text-align: center;
+  background-color: white;
+  width: 125px;
+  height: 125px;
+  border-radius: 5px;
+  margin: 12px;
+}
+
+.landitem {
+  display: inline-block;
+}
+
+.upgrade {
+  background-color: #2ecc71;
+  border-radius: 5px;
+  /*margin-top:-4px;*/
+}
+
+.label {
+  font-size: 10px;
+  width: 75px;
+}
+
+.remove {
+  background-color: #e74c3c;
+  border-radius: 5px;
 }
